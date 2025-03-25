@@ -1,0 +1,44 @@
+[
+{
+  "directory": "/home/teejarr/Code/games/Cards/out/Debug",
+  "command": "/usr/bin/c++  -I/home/teejarr/Code/games/Cards/src -I/home/teejarr/Code/games/Cards/include -I/home/teejarr/Code/games/Cards/include/GameState -I/home/teejarr/Code/games/Cards/include/Globals -I/home/teejarr/Code/games/Cards/include/UI -g -std=gnu++17 -o CMakeFiles/Cards.dir/src/GameState/Game.cpp.o -c /home/teejarr/Code/games/Cards/src/GameState/Game.cpp",
+  "file": "/home/teejarr/Code/games/Cards/src/GameState/Game.cpp",
+  "output": "CMakeFiles/Cards.dir/src/GameState/Game.cpp.o"
+},
+{
+  "directory": "/home/teejarr/Code/games/Cards/out/Debug",
+  "command": "/usr/bin/c++  -I/home/teejarr/Code/games/Cards/src -I/home/teejarr/Code/games/Cards/include -I/home/teejarr/Code/games/Cards/include/GameState -I/home/teejarr/Code/games/Cards/include/Globals -I/home/teejarr/Code/games/Cards/include/UI -g -std=gnu++17 -o CMakeFiles/Cards.dir/src/GameState/MainMenu.cpp.o -c /home/teejarr/Code/games/Cards/src/GameState/MainMenu.cpp",
+  "file": "/home/teejarr/Code/games/Cards/src/GameState/MainMenu.cpp",
+  "output": "CMakeFiles/Cards.dir/src/GameState/MainMenu.cpp.o"
+},
+{
+  "directory": "/home/teejarr/Code/games/Cards/out/Debug",
+  "command": "/usr/bin/c++  -I/home/teejarr/Code/games/Cards/src -I/home/teejarr/Code/games/Cards/include -I/home/teejarr/Code/games/Cards/include/GameState -I/home/teejarr/Code/games/Cards/include/Globals -I/home/teejarr/Code/games/Cards/include/UI -g -std=gnu++17 -o CMakeFiles/Cards.dir/src/GameState/OptionsMenu.cpp.o -c /home/teejarr/Code/games/Cards/src/GameState/OptionsMenu.cpp",
+  "file": "/home/teejarr/Code/games/Cards/src/GameState/OptionsMenu.cpp",
+  "output": "CMakeFiles/Cards.dir/src/GameState/OptionsMenu.cpp.o"
+},
+{
+  "directory": "/home/teejarr/Code/games/Cards/out/Debug",
+  "command": "/usr/bin/c++  -I/home/teejarr/Code/games/Cards/src -I/home/teejarr/Code/games/Cards/include -I/home/teejarr/Code/games/Cards/include/GameState -I/home/teejarr/Code/games/Cards/include/Globals -I/home/teejarr/Code/games/Cards/include/UI -g -std=gnu++17 -o CMakeFiles/Cards.dir/src/HelperFunctions/Flags.cpp.o -c /home/teejarr/Code/games/Cards/src/HelperFunctions/Flags.cpp",
+  "file": "/home/teejarr/Code/games/Cards/src/HelperFunctions/Flags.cpp",
+  "output": "CMakeFiles/Cards.dir/src/HelperFunctions/Flags.cpp.o"
+},
+{
+  "directory": "/home/teejarr/Code/games/Cards/out/Debug",
+  "command": "/usr/bin/c++  -I/home/teejarr/Code/games/Cards/src -I/home/teejarr/Code/games/Cards/include -I/home/teejarr/Code/games/Cards/include/GameState -I/home/teejarr/Code/games/Cards/include/Globals -I/home/teejarr/Code/games/Cards/include/UI -g -std=gnu++17 -o CMakeFiles/Cards.dir/src/HelperFunctions/TextFunctions.cpp.o -c /home/teejarr/Code/games/Cards/src/HelperFunctions/TextFunctions.cpp",
+  "file": "/home/teejarr/Code/games/Cards/src/HelperFunctions/TextFunctions.cpp",
+  "output": "CMakeFiles/Cards.dir/src/HelperFunctions/TextFunctions.cpp.o"
+},
+{
+  "directory": "/home/teejarr/Code/games/Cards/out/Debug",
+  "command": "/usr/bin/c++  -I/home/teejarr/Code/games/Cards/src -I/home/teejarr/Code/games/Cards/include -I/home/teejarr/Code/games/Cards/include/GameState -I/home/teejarr/Code/games/Cards/include/Globals -I/home/teejarr/Code/games/Cards/include/UI -g -std=gnu++17 -o CMakeFiles/Cards.dir/src/Main.cpp.o -c /home/teejarr/Code/games/Cards/src/Main.cpp",
+  "file": "/home/teejarr/Code/games/Cards/src/Main.cpp",
+  "output": "CMakeFiles/Cards.dir/src/Main.cpp.o"
+},
+{
+  "directory": "/home/teejarr/Code/games/Cards/out/Debug",
+  "command": "/usr/bin/c++  -I/home/teejarr/Code/games/Cards/src -I/home/teejarr/Code/games/Cards/include -I/home/teejarr/Code/games/Cards/include/GameState -I/home/teejarr/Code/games/Cards/include/Globals -I/home/teejarr/Code/games/Cards/include/UI -g -std=gnu++17 -o CMakeFiles/Cards.dir/src/UI/Button.cpp.o -c /home/teejarr/Code/games/Cards/src/UI/Button.cpp",
+  "file": "/home/teejarr/Code/games/Cards/src/UI/Button.cpp",
+  "output": "CMakeFiles/Cards.dir/src/UI/Button.cpp.o"
+}
+]

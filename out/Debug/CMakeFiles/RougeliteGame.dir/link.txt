@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/RougeliteGame.dir/link.d CMakeFiles/RougeliteGame.dir/src/Main.cpp.o -o RougeliteGame  -lraylib

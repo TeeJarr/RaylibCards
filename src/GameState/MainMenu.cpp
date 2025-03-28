@@ -55,9 +55,10 @@ void MainMenu::DrawButtons() {
 
 void MainMenu::CheckButtonUpdates() {
     if (StartButton.isClicked()) {
-        Flags::SetFlags(1);
+        Flags::SetFlags(Flags::GAME_SELECTOR);
+        EndDrawing();
     }
     if (OptionsButton.isClicked()) {
-        Flags::SetFlags(2);
+        Flags::SetFlags(Flags::OPTIONS_MENU);
     }
 }

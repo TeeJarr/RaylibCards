@@ -6,24 +6,16 @@
 #include <raylib.h>
 
 Game game;
-MainMenu MainMenu;
-OptionsMenu optionsMenu;
 
 int main() {
     InitWindow(GlobalConstants::ScreenSize.x, GlobalConstants::ScreenSize.y,
                GlobalConstants::ScreenTitle);
     SetTargetFPS(60);
 
+    game.TestCards();
+
     while (!WindowShouldClose()) {
-        while (Flags::ActiveMode::inMainMenu && !WindowShouldClose()) {
-            MainMenu.Loop();
-        }
-        while (Flags::ActiveMode::inOptionsMenu && !WindowShouldClose()) {
-            optionsMenu.Loop();
-        }
-        while (Flags::ActiveMode::inGame && !WindowShouldClose()) {
-            game.Loop();
-        }
+        game.Loop();
     }
 
     CloseWindow();

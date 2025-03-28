@@ -9,8 +9,5 @@ namespace Flags
     MAIN_MENU      = 3,
     GAME_BLACKJACK = 4,
   };
-  namespace ActiveMode
-  {
-    inline int ACTIVE_FLAG = MAIN_MENU;
-  } // namespace ActiveMode
+  inline int ACTIVE_FLAG = MAIN_MENU;
 } // namespace Flags

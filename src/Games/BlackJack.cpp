@@ -24,10 +24,10 @@ void BlackJack::Draw() {
 }
 
 void BlackJack::Update() {
-  if (GameFlag == StartPlayerTurn || GameFlag == WaitForInput) {
+  if (GameFlag == Flags::StartPlayerTurn || GameFlag == Flags::WaitForInput) {
     PlayerTurn();
   }
-  if (GameFlag == DealerMove) {
+  if (GameFlag == Flags::DealerMove) {
     DealerTurn();
   }
 }
@@ -64,7 +64,7 @@ void BlackJack::DealerTurn() {
 
   std::cout << DealerHandValue << "\n";
 
-  GameFlag = StartPlayerTurn;
+  GameFlag = Flags::StartPlayerTurn;
 }
 
 void BlackJack::Bust() {
@@ -73,7 +73,7 @@ void BlackJack::Bust() {
 }
 
 void BlackJack::PlayerTurn() {
-  if (GameFlag == StartPlayerTurn) {
+  if (GameFlag == Flags::StartPlayerTurn) {
     std::cout << "Press \"H\" to hit\n";
     std::cout << "Press \"S\" to stand\n";
   }
@@ -82,13 +82,13 @@ void BlackJack::PlayerTurn() {
   switch (GetKeyPressed()) {
     case KEY_S:
       std::cout << "Player stand\n";
-      GameFlag = DealerMove;
+      GameFlag = Flags::DealerMove;
       break;
     case KEY_H:
       Hit(0);
-      GameFlag = DealerMove;
+      GameFlag = Flags::DealerMove;
       break;
-    default: GameFlag = WaitForInput; break;
+    default: GameFlag = Flags::WaitForInput; break;
   }
 }
 

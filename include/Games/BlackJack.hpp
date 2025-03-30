@@ -1,5 +1,6 @@
 #pragma once
 #include "Deck.hpp"
+#include "flags.hpp"
 #include <vector>
 
 class BlackJack
@@ -29,13 +30,8 @@ class BlackJack
   Deck deck;
   int NumPlayers = 1;
 
-  enum GameFlag {
-    StartPlayerTurn = 0,
-    WaitForInput    = 1,
-    DealerMove      = 2,
-  };
-  int GameFlag = StartPlayerTurn;
+  int GameFlag = Flags::StartPlayerTurn;
 
-  int DealerHandValue = 0;
-  int PlayerHandValue = 0;
+  int DealerHandValue;
+  int PlayerHandValue;
 };

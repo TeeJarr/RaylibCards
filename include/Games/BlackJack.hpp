@@ -12,6 +12,7 @@ class BlackJack
   void Loop();
   void Draw();
   void Update();
+  void ReInit();
 
   private:
   void DealCards(int turn);
@@ -21,7 +22,9 @@ class BlackJack
   void Hit(int turn);
   void DealerTurn();
   void PlayerTurn();
-  void Bust();
+  void Bust(int flag);
+  int CheckHandValue();
+  void ClearHands();
 
   private:
   std::vector<Card> player;

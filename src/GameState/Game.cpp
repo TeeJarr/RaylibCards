@@ -54,6 +54,7 @@ void Game::Update() {
     Flags::SetFlags(Flags::MAIN_MENU);
   }
   if (BlackJackButton.isClicked()) {
+    BlackJack.ReInit();
     Flags::ACTIVE_FLAG = Flags::GAME_BLACKJACK;
     std::cout << "Button Clicked\n";
   }

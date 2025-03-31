@@ -43,18 +43,14 @@ void BlackJack::Update() {
 }
 
 void BlackJack::DrawPlayerHands() {
-  float Offset = 0.9;
+  float OffsetX = 0;
 
   for (Card card : player) {
-    float textPosY = GlobalConstants::ScreenSize.y * Offset;
-    float textPosX =
-        GlobalConstants::ScreenSize.x / 2.0f -
-        (MeasureTextEx(GetFontDefault(), card.GetCardName().c_str(), GlobalConstants::FontSize, 1)
-             .x) /
-            2.0f;
-    DrawTextEx(GetFontDefault(), card.GetCardName().c_str(), {textPosX, textPosY},
-               GlobalConstants::FontSize, 1, WHITE);
-    Offset -= 0.06;
+    float CardPosX =
+        GlobalConstants::ScreenSize.x * (0.5 + OffsetX) - (card.GetCardSize().x / 2.0f);
+    float CardPosY = GlobalConstants::ScreenSize.y * 0.5;
+    OffsetX += 0.3;
+    card.DrawCard({CardPosX, CardPosY});
   }
   // std::cout << player.size() << "\n";
 }

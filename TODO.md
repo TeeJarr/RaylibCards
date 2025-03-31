@@ -7,6 +7,11 @@
 - [ ] Add buttons for hitting and standing 
 - [ ] make the cards graphical for the table and the cards
     - [ ] make a draw card function using rectangles, text for the Values, and images of the suits
+        - [x] Draw Rectanlges
+        - [x] Draw Text For the Value
+        - [ ] Draw Image for the suits
+    - [ ] make the whole group of cards center on the screen (middle card in odd group is center and the center of the gap is 
+    the middle of the screen for even number of cards)
     - [ ] animate a hover effect for the cards to make them easier to see
     - [ ] add custom font for the cards to use
 - [ ] import a custom font to use for the GUI
@@ -21,5 +26,5 @@
 ## ON THE HORIZON
 - [ ] start working on Poker
 - [ ] start working on Spades
-- [ ] work on Uno game
+- [ ] start working on Uno game
 ### BUGS

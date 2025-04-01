@@ -36,8 +36,8 @@ void MainMenu::Update() {
 
 void MainMenu::DrawTitle() {
   float FontSize = 128;
-  DrawTextEx(GetFontDefault(), GameTitle,
-             {GlobalConstants::ScreenSize.x / 2.0f - text::CenterText(GameTitle, FontSize, GetFontDefault()).x, 50},
+  DrawTextEx(GlobalConstants::MenuFont, GameTitle,
+             {GlobalConstants::ScreenSize.x / 2.0f - text::CenterText(GameTitle, FontSize, GlobalConstants::MenuFont).x, 50},
              FontSize, 1, BLACK);
 }
 

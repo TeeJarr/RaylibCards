@@ -58,7 +58,7 @@ void Card::DrawCard(Vector2 CardPos) const {
                        ((CardPos.y + height) - textSize.y * 0.5f) * 0.99f};
   Vector2 origin    = {(textSize.x * 0.5f), (textSize.y * 0.5f)};
   DrawTextPro(GlobalConstants::CardFont, GetValueString().c_str(), secondPos, origin, roation, CardFontSize, Spacing, BLACK);
-  DrawSuitTextureFlipped({secondPos.x - textSize.x * 0.5f, secondPos.y - textSize.y});
+  DrawSuitTextureFlipped({secondPos.x - textSize.x * 0.15f, secondPos.y - textSize.y});
 }
 
 void Card::DrawSuitTexture(Vector2 pos) const {

@@ -10,6 +10,8 @@ BlackJack::BlackJack()
       HitButton("Hit", {GlobalConstants::ScreenSize.x * 0.9f, GlobalConstants::ScreenSize.y * 0.85f}, BLACK),
       StayButton("Stay", {GlobalConstants::ScreenSize.x * 0.9f, GlobalConstants::ScreenSize.y * 0.93f}, BLACK) {
   deck.ShuffleDeck();
+  GlobalConstants::game_ctrl_arr.push_back(&HitButton);
+  GlobalConstants::game_ctrl_arr.push_back(&StayButton);
 }
 
 void BlackJack::ReInit() {
@@ -73,14 +75,20 @@ void BlackJack::DrawPlayerHands() {
   if (HandSize == 4) {
     OffsetX -= offsetDelta;
   }
+  float cardOffset;
+  switch ((int)GlobalConstants::ScreenSize.x) {
+    case 2560: cardOffset = 0.75; break;
+    case 1920: cardOffset = 0.5; break;
+    case 1280: cardOffset = 0.15; break;
+  }
 
   for (Card card : player) {
     float CardPosX;
     HandSize = player.size();
 
     if (HandSize % 2 == 0) {
-      CardPosX =
-          GlobalConstants::ScreenSize.x * (0.5 + OffsetX) + (card.GetCardSize().x * 0.15); // centers cards on gap between
+      CardPosX = GlobalConstants::ScreenSize.x * (0.5 + OffsetX) +
+                 (card.GetCardSize().x * cardOffset); // centers cards on gap between
     } else {
       CardPosX =
           GlobalConstants::ScreenSize.x * (0.5 + OffsetX) - card.GetCardSize().x * 0.5f; // center cards on center card
@@ -110,12 +118,18 @@ void BlackJack::DrawDealerHands() {
   if (HandSize == 4) {
     OffsetX -= offsetDelta;
   }
+  float cardOffset;
+  switch ((int)GlobalConstants::ScreenSize.x) {
+    case 2560: cardOffset = 0.75; break;
+    case 1920: cardOffset = 0.5; break;
+    case 1280: cardOffset = 0.15; break;
+  }
 
   for (Card card : dealer) {
     float CardPosX;
     if (dealer.size() % 2 == 0) {
-      CardPosX =
-          GlobalConstants::ScreenSize.x * (0.5 + OffsetX) + (card.GetCardSize().x * 0.15); // centers cards on gap between
+      CardPosX = GlobalConstants::ScreenSize.x * (0.5 + OffsetX) +
+                 (card.GetCardSize().x * cardOffset); // centers cards on gap between
     } else {
       CardPosX =
           GlobalConstants::ScreenSize.x * (0.5 + OffsetX) - card.GetCardSize().x * 0.5f; // center cards on center card

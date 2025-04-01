@@ -5,14 +5,17 @@
 
 namespace GlobalConstants
 {
-  inline Vector2 ScreenSize{1280, 720};
+  inline Vector2 ScreenSize{1920, 1080};
   const constexpr char* ScreenTitle = "Card Games";
   inline float FontSize             = 48;
   inline std::vector<Button*> opts_btn_arr;
   inline std::vector<Button*> title_btn_arr;
   inline std::vector<Button*> sel_btn_arr;
+  inline std::vector<Button*> game_ctrl_arr;
 
   inline Font CardFont;
+  inline Font MenuFont;
+  inline Font ButtonFont;
   inline Texture2D SpadeImage;
   inline Rectangle SpadeBounds   = {0, 0, 33.75, 45};
   inline Rectangle HeartBounds   = {33.75, 0, 33.75, 45};

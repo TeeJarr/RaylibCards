@@ -19,6 +19,8 @@ class Card
   void DrawCard(Vector2 CardPos) const;
   Vector2 GetCardSize() const;
   const char* GetSuitLetter() const;
+  void DrawSuitTexture(Vector2 pos) const;
+  void DrawSuitTextureFlipped(Vector2 pos) const;
 
   private:
   Rectangle GetCardRec(Vector2 CardPos) const;
@@ -35,11 +37,10 @@ class Card
 
   int CardFontSize = 36;
   int Spacing      = 1;
-  Font CardFont    = GetFontDefault();
 
   float Roundness = 0.2;
   int Segments    = 10;
-  float roation   = 0.5;
+  float roation   = 180.0f;
   int LineThick   = 3;
   int FaceFlag;
 };

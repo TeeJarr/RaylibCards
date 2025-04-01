@@ -8,12 +8,13 @@
 - [ ] make the cards graphical for the table and the cards
     - [ ] make a draw card function using rectangles, text for the Values, and images of the suits
         - [x] Draw Rectanlges
-        - [ ] Draw Text For the Value
-            - [ ] make bottom text rotate
+        - [x] Draw Text For the Value
+            - [x] make bottom text rotate
             - [x] draw top text
-        - [ ] Draw Image for the suits
+        - [x] Draw Image for the suits
             - [x] use  text for suits
-    - [ ] make the whole group of cards center on the screen (middle card in odd group is center and the center of the gap is 
+            - [ ] align the image with the bottom flipped text
+    - [x] make the whole group of cards center on the screen (middle card in odd group is center and the center of the gap is 
     the middle of the screen for even number of cards)
     - [ ] animate a hover effect for the cards to make them easier to see
     - [ ] add custom font for the cards to use

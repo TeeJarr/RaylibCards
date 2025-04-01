@@ -13,6 +13,7 @@ namespace Flags
     StartPlayerTurn = 0,
     WaitForInput    = 1,
     DealerMove      = 2,
+    Pause           = 3,
   };
   enum PLAYER_CHOCIE {
     PLAYER = 0,

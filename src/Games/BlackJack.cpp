@@ -5,7 +5,10 @@
 #include "raylib.h"
 #include <iostream>
 
-BlackJack::BlackJack() : deck(GetNumDecks()) {
+BlackJack::BlackJack()
+    : deck(GetNumDecks()),
+      HitButton("Hit", {GlobalConstants::ScreenSize.x * 0.9f, GlobalConstants::ScreenSize.y * 0.85f}, BLACK),
+      StayButton("Stay", {GlobalConstants::ScreenSize.x * 0.9f, GlobalConstants::ScreenSize.y * 0.93f}, BLACK) {
   deck.ShuffleDeck();
 }
 
@@ -30,17 +33,34 @@ void BlackJack::Draw() {
   ClearBackground(BLUE);
   DrawPlayerHands();
   DrawDealerHands();
-  DrawLineEx({GlobalConstants::ScreenSize.x / 2.0f, 0},
-             {GlobalConstants::ScreenSize.x / 2.0f, GlobalConstants::ScreenSize.y}, 2, BLACK);
+  DrawGameControls();
+  DrawAlignmentLines(true);
   EndDrawing();
+}
+
+void BlackJack::DrawAlignmentLines(bool isActive) {
+  if (isActive) {
+    DrawLineEx({GlobalConstants::ScreenSize.x / 2.0f, 0},
+               {GlobalConstants::ScreenSize.x / 2.0f, GlobalConstants::ScreenSize.y}, 2, BLACK);
+    DrawLineEx({0, GlobalConstants::ScreenSize.y / 2.0f},
+               {GlobalConstants::ScreenSize.x, GlobalConstants::ScreenSize.y / 2.0f}, 2, BLACK);
+  }
+}
+
+void BlackJack::DrawGameControls() {
+  HitButton.Draw();
+  StayButton.Draw();
 }
 
 void BlackJack::Update() {
   if (GameFlag == Flags::StartPlayerTurn || GameFlag == Flags::WaitForInput) {
     PlayerTurn();
   }
-  if (GameFlag == Flags::DealerMove) {
+  if (GameFlag == Flags::DealerMove && GameFlag != Flags::Pause) {
     DealerTurn();
+  }
+  if (GameFlag == Flags::Pause) {
+    Pause();
   }
 }
 
@@ -49,10 +69,16 @@ void BlackJack::DrawPlayerHands() {
   float OffsetX     = 0;
   float offsetDelta = 0.2;
   OffsetX           = (offsetDelta * -1);
+  int HandSize      = player.size();
+  if (HandSize == 4) {
+    OffsetX -= offsetDelta;
+  }
 
   for (Card card : player) {
     float CardPosX;
-    if (player.size() % 2 == 0) {
+    HandSize = player.size();
+
+    if (HandSize % 2 == 0) {
       CardPosX =
           GlobalConstants::ScreenSize.x * (0.5 + OffsetX) + (card.GetCardSize().x * 0.15); // centers cards on gap between
     } else {
@@ -66,11 +92,24 @@ void BlackJack::DrawPlayerHands() {
   // std::cout << player.size() << "\n";
 }
 
+void BlackJack::Pause() {
+  if (GameFlag == Flags::Pause) {
+    if (IsKeyPressed(KEY_P)) {
+      ReInit();
+      GameFlag = Flags::StartPlayerTurn;
+    }
+  }
+}
+
 void BlackJack::DrawDealerHands() {
   float Offset      = 0.1;
   float OffsetX     = 0;
   float offsetDelta = 0.2;
   OffsetX           = (offsetDelta * -1);
+  int HandSize      = dealer.size();
+  if (HandSize == 4) {
+    OffsetX -= offsetDelta;
+  }
 
   for (Card card : dealer) {
     float CardPosX;
@@ -102,7 +141,7 @@ void BlackJack::DealerTurn() {
   } else {
     Bust(Flags::PLAYER);
   }
-  GameFlag = Flags::StartPlayerTurn;
+  GameFlag = Flags::Pause;
 }
 
 void BlackJack::Bust(int flag) {
@@ -113,7 +152,7 @@ void BlackJack::Bust(int flag) {
   } else {
     std::cout << "Push\n";
   }
-  Flags::SetFlags(Flags::MAIN_MENU);
+  GameFlag = Flags::Pause;
 }
 
 void BlackJack::PlayerTurn() {
@@ -124,19 +163,17 @@ void BlackJack::PlayerTurn() {
   if (CheckHandValue() > 21) {
     Bust(Flags::PLAYER);
   }
-  int playerChoice;
-  switch (GetKeyPressed()) {
-    case KEY_S:
-      std::cout << "Player stand\n";
-      GameFlag = Flags::DealerMove;
-      break;
-    case KEY_H:
-      Hit(Flags::PLAYER);
-      if (CheckHandValue() > 21) {
-        Bust(1);
-      }
-      break;
-    default: GameFlag = Flags::WaitForInput; break;
+
+  if (HitButton.isClicked()) {
+    Hit(Flags::PLAYER);
+    if (CheckHandValue() > 21) {
+      Bust(Flags::PLAYER);
+    }
+  } else if (StayButton.isClicked()) {
+    std::cout << "Player stand\n";
+    GameFlag = Flags::DealerMove;
+  } else {
+    GameFlag = Flags::WaitForInput;
   }
 }
 

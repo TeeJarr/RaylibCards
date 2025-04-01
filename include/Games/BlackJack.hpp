@@ -1,4 +1,5 @@
 #pragma once
+#include "Button.hpp"
 #include "Deck.hpp"
 #include "flags.hpp"
 #include <vector>
@@ -25,6 +26,9 @@ class BlackJack
   void Bust(int flag);
   int CheckHandValue();
   void ClearHands();
+  void DrawAlignmentLines(bool isActive);
+  void Pause();
+  void DrawGameControls();
 
   private:
   std::vector<Card> player;
@@ -37,4 +41,7 @@ class BlackJack
 
   int DealerHandValue;
   int PlayerHandValue;
+
+  Button HitButton;
+  Button StayButton;
 };

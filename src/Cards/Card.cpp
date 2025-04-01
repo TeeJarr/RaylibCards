@@ -1,4 +1,5 @@
 #include "Card.hpp"
+#include "GlobalConstants.hpp"
 #include "raylib.h"
 #include <iostream>
 #include <string>
@@ -37,25 +38,62 @@ std::string Card::GetValueString() const {
 }
 
 void Card::DrawCard(Vector2 CardPos) const {
+  // std::cout << IsFontValid(GlobalConstants::CardFont) << "\n";
   Color CardColor;
   if (Suit == Clubs || Suit == Spade) {
     CardColor = BLACK;
   } else {
     CardColor = RED;
   }
+
   DrawRectangleRounded(GetCardRec(CardPos), Roundness, Segments, WHITE);
   DrawRectangleRoundedLinesEx(GetCardRec(CardPos), Roundness, Segments, LineThick, CardColor);
 
-  Vector2 textPos  = {CardPos.x * 1.01f, CardPos.y * 1.01f};
-  Vector2 textSize = MeasureTextEx(GetFontDefault(), GetValueString().c_str(), 36, 1);
-  DrawTextEx(CardFont, GetValueString().c_str(), textPos, CardFontSize, Spacing, CardColor);
-  DrawTextEx(CardFont, GetSuitLetter(), {textPos.x, textPos.y + textSize.y}, CardFontSize, Spacing, CardColor);
+  Vector2 textPos  = {CardPos.x * 1.02f, CardPos.y * 1.02f};
+  Vector2 textSize = MeasureTextEx(GlobalConstants::CardFont, GetValueString().c_str(), 36, 1);
+  DrawTextEx(GlobalConstants::CardFont, GetValueString().c_str(), textPos, CardFontSize, Spacing, CardColor);
+  DrawSuitTexture({textPos.x - textSize.x * 0.5f, textPos.y + textSize.y});
 
-  Vector2 secondPos = {((CardPos.x + width) - textSize.x) * 0.99f, ((CardPos.y + height) - textSize.y) * 0.99f};
-  DrawTextEx(CardFont, GetValueString().c_str(), secondPos, CardFontSize, Spacing, CardColor);
-  DrawTextEx(CardFont, GetSuitLetter(), {secondPos.x, secondPos.y - textSize.y}, CardFontSize, Spacing, CardColor);
-  Vector2 origin = {secondPos.x - (textSize.x * 0.5f), secondPos.y - (textSize.y * 0.5f)};
-  // DrawTextPro(CardFont, GetValueString().c_str(), secondPos, origin, roation, CardFontSize, Spacing, BLACK);
+  Vector2 secondPos = {((CardPos.x + width) - textSize.x * 0.5f) * 0.99f,
+                       ((CardPos.y + height) - textSize.y * 0.5f) * 0.99f};
+  Vector2 origin    = {(textSize.x * 0.5f), (textSize.y * 0.5f)};
+  DrawTextPro(GlobalConstants::CardFont, GetValueString().c_str(), secondPos, origin, roation, CardFontSize, Spacing, BLACK);
+  DrawSuitTextureFlipped({secondPos.x - textSize.x * 0.5f, secondPos.y - textSize.y});
+}
+
+void Card::DrawSuitTexture(Vector2 pos) const {
+  switch (GetSuitValue()) {
+    case Clubs  : DrawTextureRec(GlobalConstants::SpadeImage, GlobalConstants::ClubBounds, pos, WHITE); break;
+    case Hearts : DrawTextureRec(GlobalConstants::SpadeImage, GlobalConstants::HeartBounds, pos, WHITE); break;
+    case Spade  : DrawTextureRec(GlobalConstants::SpadeImage, GlobalConstants::SpadeBounds, pos, WHITE); break;
+    case Diamond: DrawTextureRec(GlobalConstants::SpadeImage, GlobalConstants::DiamondBounds, pos, WHITE); break;
+  }
+}
+
+void Card::DrawSuitTextureFlipped(Vector2 pos) const {
+  Vector2 origin = {GlobalConstants::ClubBounds.width * 0.5f, GlobalConstants::ClubBounds.height * 0.5f};
+  switch (GetSuitValue()) {
+    case Clubs:
+      DrawTexturePro(GlobalConstants::SpadeImage, GlobalConstants::ClubBounds,
+                     {pos.x, pos.y, GlobalConstants::ClubBounds.width, GlobalConstants::ClubBounds.height}, origin, roation,
+                     WHITE);
+      break;
+    case Hearts:
+      DrawTexturePro(GlobalConstants::SpadeImage, GlobalConstants::HeartBounds,
+                     {pos.x, pos.y, GlobalConstants::ClubBounds.width, GlobalConstants::ClubBounds.height}, origin, roation,
+                     WHITE);
+      break;
+    case Spade:
+      DrawTexturePro(GlobalConstants::SpadeImage, GlobalConstants::SpadeBounds,
+                     {pos.x, pos.y, GlobalConstants::ClubBounds.width, GlobalConstants::ClubBounds.height}, origin, roation,
+                     WHITE);
+      break;
+    case Diamond:
+      DrawTexturePro(GlobalConstants::SpadeImage, GlobalConstants::DiamondBounds,
+                     {pos.x, pos.y, GlobalConstants::ClubBounds.width, GlobalConstants::ClubBounds.height}, origin, roation,
+                     WHITE);
+      break;
+  }
 }
 
 Vector2 Card::GetCardSize() const {
